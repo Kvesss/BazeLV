@@ -16,9 +16,13 @@ SUBSTRING(ime, 1, 1) AS 'imeInic', SUBSTRING(prezime, 1, 1) AS 'prezimeInic', YE
 FROM student
 ORDER BY godinaRodenja ASC;
 
+SELECT * FROM student ORDER BY datRod ASC;
+
+
 SELECT ime, prezime, datRod
 FROM student
 WHERE datRod=(SELECT MIN(datRod) FROM student WHERE spol='F')
+
 
 --Zad2
 
@@ -32,10 +36,11 @@ FROM student;
 SELECT *
 FROM student;
 
+
 --Zad3
 
 SELECT
-AVG(CAST(ocjena AS DECIMAL(3,2))) AS 'prosjecnaOcjena'
+CAST(AVG(CAST(ocjena AS DECIMAL(3,2))) AS DECIMAL(3,2)) AS 'prosjecnaOcjena'
 FROM ispit
 WHERE ocjena > 1;
 
@@ -43,13 +48,13 @@ WHERE ocjena > 1;
 --Zad4
 
 SELECT
-ime, prezime, AVG(CAST(ocjena AS DECIMAL(3,2))) AS 'prosjecnaOcjena'
+ime, prezime, CAST(AVG(CAST(ocjena AS DECIMAL(3,2))) AS DECIMAL(3,2)) AS 'prosjecnaOcjena'
 FROM ispit, student
 WHERE mbrStud = mbr AND ocjena > 1
 GROUP BY prezime, ime
 ORDER BY prosjecnaOcjena DESC;
 
-SELECT mbrStud, AVG(CAST(ocjena AS DECIMAL(3,2)))
+SELECT mbrStud, CAST(AVG(CAST(ocjena AS DECIMAL(3,2))) AS DECIMAL(3,2))
 FROM ispit
 WHERE ocjena > 1
 GROUP BY mbrStud
