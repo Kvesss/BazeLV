@@ -21,7 +21,7 @@ SELECT * FROM student ORDER BY datRod ASC;
 
 SELECT ime, prezime, datRod
 FROM student
-WHERE datRod=(SELECT MIN(datRod) FROM student WHERE spol='F')
+WHERE datRod=(SELECT MIN(datRod) FROM student WHERE spol='F') AND spol='F';
 
 
 --Zad2
@@ -67,3 +67,5 @@ ALTER VIEW ispiti AS
 SELECT naziv, ocjena, datIspita, ime, prezime
 FROM ispit, predmet, student
 WHERE mbrStud = mbr AND sifPredmeta = sifra; -- AND ocjena > 1
+
+SELECT * FROM ispiti
